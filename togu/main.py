@@ -21,5 +21,5 @@ def main(arguments=None):
     try:
         Togu(args.port, args.service_name, args.timeout, args.retry).run()
     except IncompleteEnvironmentException as exc:
-        sys.exit('this program must be run as an [eventhandler] under '
+        sys.exit('this program must be run as an [eventlistener] under '
                  'supervisor\nmissing environment variable: {0}'.format(exc))
