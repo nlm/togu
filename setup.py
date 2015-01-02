@@ -2,11 +2,12 @@ from setuptools import setup,find_packages
 
 setup(
     name = "togu",
-    version = "0.1",
+    version = "0.1.1",
     packages = find_packages(),
     author = "Nicolas Limage",
-    description = "supervisord event handler to watch shinken",
-    license = "GPL",
+    description = "supervisord event listener to watch shinken daemons",
+    url="https://github.com/nlm/togu",
+    license = "MIT",
     keywords = "shinken watch supervisord",
     classifiers = [
         'Development Status :: 4 - Beta',
@@ -26,5 +27,4 @@ setup(
             'togu = togu.main:main',
         ],
     },
-    test_suite = 'togu.test',
 )
