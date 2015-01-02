@@ -1,4 +1,4 @@
 togu
 ====
 
-WIP
+Health check for shinken daemons running under supervisor
