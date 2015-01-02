@@ -15,7 +15,7 @@ def main(arguments=None):
     parser.add_argument('--retry', '-r', metavar='TIMES', type=int, default=3,
                         help='number of times to retry before restarting')
     parser.add_argument('--timeout', '-t', metavar='TIMES', type=int,
-                        default=5, help='time to respond to ping')
+                        default=10, help='time to respond to ping')
     args = parser.parse_args(arguments)
 
     try:
