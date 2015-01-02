@@ -100,5 +100,7 @@ class Togu(SupervisorEventHandler):
                     self.start_process(self.service)
                     errors = 0
             else:
+                if errors > 0:
+                    self.log('service "{0}" recovered'.format(self.service))
                 errors = 0
             self.ok(stdout=self.stdout)
