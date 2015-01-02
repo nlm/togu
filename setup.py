@@ -19,7 +19,7 @@ setup(
     ],
     install_requires = [
         'pycurl>=7',
-        'supervisor>=3',
+        'supervisor>=2.999',
     ],
     entry_points = {
         'console_scripts': [
