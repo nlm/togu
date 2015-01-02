@@ -2,6 +2,7 @@ from __future__ import print_function, unicode_literals
 import sys
 import os
 import pycurl
+import datetime
 from supervisor.childutils import listener, getRPCInterface
 from abc import abstractmethod
 from StringIO import StringIO
@@ -26,7 +27,8 @@ class SupervisorEventHandler(object):
         self.rpc = rpc
 
     def log(self, string):
-        self.stderr.write('{0}\n'.format(string))
+        self.stderr.write('[{0}] {1}\n'.format(datetime.datetime.now(),
+                                               string))
         self.stderr.flush()
 
     def start_process(self, name):
