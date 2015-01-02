@@ -6,6 +6,9 @@ from supervisor.childutils import listener, getRPCInterface
 from abc import abstractmethod
 from StringIO import StringIO
 
+class IncompleteEnvironmentException(Exception):
+    pass
+
 class SupervisorEventHandler(object):
 
     def __init__(self, port, service, rpc=None,
@@ -16,7 +19,10 @@ class SupervisorEventHandler(object):
         self.stdout = stdout
         self.stderr = stderr
         if rpc is None:
-            rpc = getRPCInterface(os.environ)
+            try:
+                rpc = getRPCInterface(os.environ)
+            except KeyError as error:
+                raise IncompleteEnvironmentException(error)
         self.rpc = rpc
 
     def log(self, string):
