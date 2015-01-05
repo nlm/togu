@@ -78,9 +78,11 @@ class Togu(SupervisorEventHandler):
             response = buf.getvalue()
             if response != '"pong"':
                 self.log('bad response: {}'.format(response))
+                c.close()
                 return False
         except pycurl.error as error:
             self.log('curl error: {}'.format(error))
+            c.close()
             return False
 
         c.close()

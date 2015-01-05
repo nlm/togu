@@ -5,7 +5,9 @@ from .core import Togu, IncompleteEnvironmentException
 
 def main(arguments=None):
     parser = argparse.ArgumentParser(description='ping shinken service '
-                                     'in supervisord')
+                                                 'via http and restart it in '
+                                                 'supervisord if it does\'nt '
+                                                 'respond'
     parser.add_argument('--port', '-p', metavar='PORT', type=int,
                         required=True,
                         help='port of the shinken daemon to check')
@@ -13,9 +15,11 @@ def main(arguments=None):
                         required=True,
                         help='name of the service in supervisord')
     parser.add_argument('--retry', '-r', metavar='TIMES', type=int, default=3,
-                        help='number of times to retry before restarting')
-    parser.add_argument('--timeout', '-t', metavar='TIMES', type=int,
-                        default=10, help='time to respond to ping')
+                        help='number of times to retry before triggering '
+                             'a restart (default: 3)')
+    parser.add_argument('--timeout', '-t', metavar='SECONDS', type=int,
+                        default=10, help='maximum time to respond to ping '
+                                         '(default: 10 seconds)')
     args = parser.parse_args(arguments)
 
     try:
